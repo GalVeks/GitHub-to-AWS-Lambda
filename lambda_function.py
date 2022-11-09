@@ -4,6 +4,10 @@ import json
 import numpy as np
 import requests
 
+import psycopg2
+from datetime import date
+import datetime
+
 def lambda_handler(event, context):
     connection = psycopg2.connect(user="postgres",
                                   password="postgres",
