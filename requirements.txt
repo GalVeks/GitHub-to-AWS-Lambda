@@ -1,5 +1,4 @@
 pandas==1.2.1
 numpy
 requests
-psycopg2
 datetime
