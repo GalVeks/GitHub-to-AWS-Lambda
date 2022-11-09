@@ -1,14 +1,20 @@
-import json
-import psycopg2
-from datetime import date
-import datetime
 
+import pandas as pd
+import json
+import numpy as np
+import requests
 
 def lambda_handler(event, context):
+    pandas_version = pd.__version__
+    numpy_version = np.__version__
 
-    print('a')
-   
+    r = requests.get("https://www.google.com")
+    google_status_code = r.status_code
+
+    return_statement = 'Pandas Version: ', pandas_version, 'Numpy Version: ', numpy_version, 'Google Status Code: ', google_status_code
+
     return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
+        'statusCode':200,
+        'body': json.dumps(return_statement)
     }
+
