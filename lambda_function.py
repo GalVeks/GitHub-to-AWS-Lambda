@@ -8,8 +8,8 @@ import datetime
 
 def lambda_handler(event, context):
     # TODO implement
-
-    
+print('a')
+'''    
     connection = psycopg2.connect(user="postgres",
                                   password="postgres",
                                   host="devpostgres01.cphbkxf9hicq.us-east-1.rds.amazonaws.com",
@@ -38,7 +38,7 @@ def lambda_handler(event, context):
     connection.commit()
     count = cursor.rowcount
     print(count, "Record inserted successfully into mobile table")
-
+'''
    
     return {
         'statusCode': 200,
