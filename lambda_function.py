@@ -8,7 +8,7 @@ import datetime
 
 def lambda_handler(event, context):
     # TODO implement
-print('a')
+    print('a')
 '''    
     connection = psycopg2.connect(user="postgres",
                                   password="postgres",
