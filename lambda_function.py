@@ -4,7 +4,7 @@ import json
 import numpy as np
 import requests
 
-import psycopg2
+#import psycopg2
 from datetime import date
 import datetime
 
