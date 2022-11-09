@@ -25,7 +25,7 @@ def lambda_handler(event, context):
                                                             END_TIME, 
                                                             STATUS, 
                                                             DURATION) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
-    record_to_insert = ('1', 
+    record_to_insert = ('2', 
                         'Instagram', 
                         'DISPLAY_NAME',
                         date.today(),
