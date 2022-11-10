@@ -6,7 +6,7 @@ import requests
 import psycopg2
 from datetime import date
 import datetime
-from main import main_run
+from lib import main
 
 def lambda_handler(event, context):
 
@@ -54,7 +54,7 @@ def lambda_handler(event, context):
 #### Put your code in this block 
 ##########################################
     
-    main_run()
+    main.main_run()
 
 
 ##########################################
