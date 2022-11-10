@@ -5,8 +5,7 @@ import numpy as np
 import requests
 import psycopg2
 from datetime import date
-import datetime
-from lib import main
+import main
 
 def lambda_handler(event, context):
 
