@@ -6,6 +6,7 @@ import requests
 import psycopg2
 from datetime import date
 import datetime
+from main import main_run
 
 def lambda_handler(event, context):
 
@@ -22,7 +23,6 @@ def lambda_handler(event, context):
                         from "SP_ADMIN".ref_runbook_history''')
     result = cursor.fetchone()
     idx = str(result[0])
-
 
 #Define insert query (to factorization later)
     postgres_insert_query = """ INSERT INTO "SP_ADMIN".ref_runbook_history (RUN_ID, 
@@ -48,6 +48,19 @@ def lambda_handler(event, context):
     connection.commit()
     count = cursor.rowcount
     print(count, "Record inserted successfully into mobile table")
+
+
+##########################################
+#### Put your code in this block 
+##########################################
+    
+    main_run()
+
+
+##########################################
+##########################################
+
+
 
     return {
         'statusCode':200,

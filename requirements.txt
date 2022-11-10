@@ -3,3 +3,4 @@ numpy
 requests
 datetime
 psycopg2-binary
+time
