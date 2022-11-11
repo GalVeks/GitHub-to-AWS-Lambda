@@ -5,5 +5,4 @@ datetime
 psycopg2-binary
 
 boto3==1.25.4
-awscli
 instaloader
