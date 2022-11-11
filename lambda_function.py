@@ -8,7 +8,7 @@ from datetime import date
 import datetime
 import main
 
-def lambda_handler(event=None, context=None):
+def lambda_handler(event, context):
 
 #Create PostgreSQL connection (Parameters should be stored in KMS)
     connection = psycopg2.connect(user="postgres",
@@ -68,4 +68,3 @@ def lambda_handler(event=None, context=None):
     }
 
 
-print(lambda_handler())
