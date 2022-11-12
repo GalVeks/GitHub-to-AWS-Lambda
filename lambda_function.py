@@ -56,7 +56,7 @@ def lambda_handler(event, context):
     print(event['pathParameters']['account'])
 
 
-    'main.main_run()
+    #main.main_run()
 
     ##########################################
     ##########################################
