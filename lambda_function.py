@@ -52,7 +52,10 @@ def lambda_handler(event, context):
     # Put your code in this block
     ##########################################
 
-    print(event['requestContext']['identity']['userAgent'])
+
+    print(event['pathParameters']['account'])
+
+
     'main.main_run()
 
     ##########################################
