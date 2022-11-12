@@ -54,7 +54,7 @@ def lambda_handler(event, context):
     ##########################################
     # Put your code in this block
     ##########################################
-    
+
     #main.main_run(account_scrape)
 
     ##########################################
@@ -62,7 +62,7 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': event #json.dumps('ok')#'Scrape account: {}'.format(account_scrape))
+        'body': event['version'] #json.dumps('ok')#'Scrape account: {}'.format(account_scrape))
       }
 
 
