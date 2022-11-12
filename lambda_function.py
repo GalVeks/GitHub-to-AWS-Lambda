@@ -70,7 +70,7 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': '<h1>query string parameter</h1>'
-                
+        'body': event['http']['path']
+
 
     }
