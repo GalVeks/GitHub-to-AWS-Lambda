@@ -52,7 +52,8 @@ def lambda_handler(event, context):
     # Put your code in this block
     ##########################################
 
-    main.main_run()
+    print(event['requestContext']['identity']['userAgent'])
+    'main.main_run()
 
     ##########################################
     ##########################################
