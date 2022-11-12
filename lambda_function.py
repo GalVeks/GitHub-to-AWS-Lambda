@@ -65,7 +65,9 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': account_scrape #json.dumps('Scrape account: {}'.format(account_scrape))
+        'body': json.dumps('Scrape account: {}'.format(account_scrape))
       }
+
+
 
 
