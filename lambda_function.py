@@ -58,7 +58,7 @@ def lambda_handler(event, context):
     # print(event['requestContext']['identity']['userAgent'])
     # print(event['requestContext']['identity']['sourceIP'])
 
-    main.main_run(account_scrape)
+    #main.main_run(account_scrape)
 
     ##########################################
     ##########################################
