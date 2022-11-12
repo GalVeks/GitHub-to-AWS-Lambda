@@ -53,7 +53,9 @@ def lambda_handler(event, context):
     ##########################################
 
 
-    print(event['pathParameters']['account'])
+    print(event['account'])
+    #print(event['requestContext']['identity']['userAgent'])
+    #print(event['requestContext']['identity']['sourceIP'])
 
 
     #main.main_run()
