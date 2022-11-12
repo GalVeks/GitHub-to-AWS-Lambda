@@ -11,7 +11,7 @@ import main
 def lambda_handler(event, context):
     # Create Postgres SQL connection (Parameters should be stored in KMS)
 
-    account_scrape = event['account']
+    # account_scrape = event['account']
 
     connection = psycopg2.connect(user="postgres",
                                   password="postgres",
@@ -55,16 +55,21 @@ def lambda_handler(event, context):
     # Put your code in this block
     ##########################################
 
-    #print(event['requestContext']['identity']['userAgent'])
-    #print(event['requestContext']['identity']['sourceIP'])
+    # print(event['requestContext']['identity']['userAgent'])
+    # print(event['requestContext']['identity']['sourceIP'])
 
-
-    #main.main_run()
+    # main.main_run()
 
     ##########################################
     ##########################################
+
+    #   return {
+    #       'statusCode': 200,
+    #       'body': json.dumps('Scrape account: ')
+    #   }
 
     return {
         'statusCode': 200,
-        'body': json.dumps('Scrape account: {}'.format(account_scrape))
+        'body': "<h1> query string parameter</h1>"
+                            
     }
