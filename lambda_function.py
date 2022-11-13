@@ -50,7 +50,7 @@ def lambda_handler(event, context):
     connection.commit()
     count = cursor.rowcount
     print(count, "Record inserted successfully into mobile table")
-
+    print(event['parameter'])
     ##########################################
     # Put your code in this block
     ##########################################
@@ -62,7 +62,7 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': event['version'] #json.dumps('ok')#'Scrape account: {}'.format(account_scrape))
+        'body': json.dumps('ok')#'Scrape account: {}'.format(account_scrape))
       }
 
 
