@@ -5,6 +5,7 @@ import requests
 import psycopg2
 from datetime import date
 import datetime
+import uuid
 import main
 
 
@@ -54,7 +55,7 @@ def lambda_handler(event, context):
     ##########################################
     # Put your code in this block
     ##########################################
-    print(event['queryStringParameters']['name'])
+    print(event['queryStringParameters']['Account'])
     #main.main_run(account_scrape)
 
     ##########################################
