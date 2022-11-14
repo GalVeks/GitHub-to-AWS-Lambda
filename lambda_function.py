@@ -54,7 +54,7 @@ def lambda_handler(event, context):
     ##########################################
     # Put your code in this block
     ##########################################
-
+    print(event)
     #main.main_run(account_scrape)
 
     ##########################################
