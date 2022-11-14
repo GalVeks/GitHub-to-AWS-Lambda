@@ -38,11 +38,11 @@ def lambda_handler(event, context):
                                                             STATUS, 
                                                             DURATION) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
 
-    record_to_insert = (idx,
-                        event_scrape,
-                        account_scrape,
-                        date.today(),
-                        datetime.datetime.now()
+    record_to_insert = (idx
+                        , event_scrape
+                        , account_scrape
+                        , date.today()
+                        , datetime.datetime.now()
                         , datetime.datetime.now()
                         , 'Failed'
                         , datetime.datetime.now() - datetime.datetime.now())
@@ -57,17 +57,16 @@ def lambda_handler(event, context):
     # Put your code in this block
     ##########################################
 
+    # Scrape follower by account
     if event_scrape == "/igFollowers":
-        print(event['queryStringParameters']['Account'])
+        print("Start scraping follower of :" + account_scrape)
+        main.main_run(account_scrape)
 
-    #main.main_run(account_scrape)
-
-    ##########################################
     ##########################################
 
     return {
         'statusCode': 200,
-        'body': json.dumps('ok')#'Scrape account: {}'.format(account_scrape))
+        'body': json.dumps('ok')  # 'Scrape account: {}'.format(account_scrape))
       }
 
 
