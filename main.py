@@ -4,7 +4,6 @@ import random
 from public_func import save_pd_csv_to_s3
 from datetime import date
 
-
 def main_run(profile):
     data = {'Index': [1], 'Username': ['lapicanteff'], 'Password': ['Gv300444494!!']}
     dfigaccounts = pd.DataFrame(data)

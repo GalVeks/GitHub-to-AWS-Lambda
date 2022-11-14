@@ -12,7 +12,8 @@ import main
 def lambda_handler(event, context):
     # Create Postgres SQL connection (Parameters should be stored in KMS)
 
-    #account_scrape = str(event['queryStringParameters']['account'])
+    account_scrape = str(event['queryStringParameters']['account'])
+    event_scrape = str(event['rawPath'])
 
     connection = psycopg2.connect(user="postgres",
                                   password="postgres",
@@ -38,8 +39,8 @@ def lambda_handler(event, context):
                                                             DURATION) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
 
     record_to_insert = (idx,
-                        'Instagram',
-                        'DISPLAY_NAME',
+                        event_scrape,
+                        account_scrape,
                         date.today(),
                         datetime.datetime.now()
                         , datetime.datetime.now()
@@ -55,7 +56,10 @@ def lambda_handler(event, context):
     ##########################################
     # Put your code in this block
     ##########################################
-    print(event['queryStringParameters']['Account'])
+
+    if event_scrape == "/igFollowers":
+        print(event['queryStringParameters']['Account'])
+        
     #main.main_run(account_scrape)
 
     ##########################################
