@@ -12,7 +12,7 @@ import main
 def lambda_handler(event, context):
     # Create Postgres SQL connection (Parameters should be stored in KMS)
 
-    account_scrape = str(event['queryStringParameters']['account'])
+    account_scrape = str(event['queryStringParameters']['Account'])
     event_scrape = str(event['rawPath'])
 
     connection = psycopg2.connect(user="postgres",
@@ -59,7 +59,7 @@ def lambda_handler(event, context):
 
     if event_scrape == "/igFollowers":
         print(event['queryStringParameters']['Account'])
-        
+
     #main.main_run(account_scrape)
 
     ##########################################
