@@ -9,7 +9,7 @@ import uuid
 import main
 
 
-def lambda_handler(event, context):
+def lambda_handler(event=None, context=None):
     # Create Postgres SQL connection (Parameters should be stored in KMS)
 
     account_scrape = "galvekselman"  # str(event['queryStringParameters']['Account'])
@@ -68,9 +68,26 @@ def lambda_handler(event, context):
             print("Start scraping follower of :" + account_scrape)
             main.main_run(account_scrape)
 
+        ##########################################
+        postgres_insert_query = """ UPDATE "SP_ADMIN".ref_runbook_history 
+                                            SET status = 'SUCCEEDED'
+                                            ,end_time = %s
+                                            ,duration = %s
+                                            ,payload = %s
+                                            WHERE run_id = %s """
 
-    ##########################################
+        record_to_insert = (datetime.datetime.now()
+                            , datetime.datetime.now() - run_timestamp
+                            , "Account: " + account_scrape
+                            , idx
+                            )
 
+        # execute the query
+        cursor.execute(postgres_insert_query, record_to_insert)
+        connection.commit()
+        count = cursor.rowcount
+
+        print(count, "Record updated successfully into runbook table")
     except Exception as e:
 
         postgres_insert_query = """ UPDATE "SP_ADMIN".ref_runbook_history 
@@ -101,4 +118,4 @@ def lambda_handler(event, context):
     }
 
 
-
+lambda_handler()
