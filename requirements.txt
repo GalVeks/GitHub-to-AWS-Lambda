@@ -4,4 +4,4 @@ requests
 datetime
 psycopg2-binary
 instaloader
-
+yfinance
