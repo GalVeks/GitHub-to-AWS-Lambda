@@ -8,7 +8,7 @@ import main
 def lambda_handler(event, context):
     # Create Postgres SQL connection (Parameters should be stored in KMS)
 
-    account_scrape = "galvekselman"  # str(event['queryStringParameters']['Account'])
+    account_scrape = str(event['queryStringParameters']['Account'])
     event_scrape = "/igFollowers"  # str(event['rawPath'])
 
     connection = psycopg2.connect(user="postgres",
