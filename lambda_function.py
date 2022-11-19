@@ -5,7 +5,7 @@ import datetime
 import main
 
 
-def lambda_handler(event=None, context=None):
+def lambda_handler(event, context):
     # Create Postgres SQL connection (Parameters should be stored in KMS)
 
     account_scrape = event['fix_SCRAPE_ACCOUNT']  # 'galvekselman' #str(event['queryStringParameters']['Account'])
@@ -115,4 +115,3 @@ def lambda_handler(event=None, context=None):
     }
 
 
-lambda_handler()
