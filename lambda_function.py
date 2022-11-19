@@ -5,11 +5,11 @@ import datetime
 import main
 
 
-def lambda_handler(event, context):
+def lambda_handler(event=None, context=None):
     # Create Postgres SQL connection (Parameters should be stored in KMS)
 
-    account_scrape = str(event['queryStringParameters']['Account'])
-    event_scrape = "/igFollowers"  # str(event['rawPath'])
+    account_scrape = event['fix_SCRAPE_ACCOUNT']  # 'galvekselman' #str(event['queryStringParameters']['Account'])
+    event_scrape = event['variable']  # "/igFollowers"  # str(event['rawPath'])
 
     connection = psycopg2.connect(user="postgres",
                                   password="postgres",
@@ -56,13 +56,14 @@ def lambda_handler(event, context):
 
     try:
         ##########################################
-        # Put your code in this block
+        # GV: Put your code in this block
         ##########################################
 
         # Scrape follower by account
-        if event_scrape == "/igFollowers":
-            print("Start scraping follower of :" + account_scrape)
-            main.main_run(account_scrape)
+
+        print("Start scraping follower of :" + account_scrape)
+        main.main_run(account_scrape,event_scrape)
+
 
         ##########################################
         postgres_insert_query = """ UPDATE "SP_ADMIN".ref_runbook_history 
@@ -114,3 +115,4 @@ def lambda_handler(event, context):
     }
 
 
+lambda_handler()
