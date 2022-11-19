@@ -4,7 +4,7 @@ import random
 from public_func import save_pd_csv_to_s3
 from datetime import date
 
-def main_run(profile):
+def main_run(profile,type):
     data = {'Index': [1], 'Username': ['lapicanteff'], 'Password': ['Gv300444494!!']}
     dfigaccounts = pd.DataFrame(data)
 
@@ -19,9 +19,18 @@ def main_run(profile):
     # for profile in profiles:
     print(profile)
     account_index = random.randint(1, len(dfigaccounts.index))-1
-    df = cls.get_users_followers(profile,
-                                dfigaccounts['Username'][account_index],
-                                dfigaccounts['Password'][account_index]
-                                )
-    directory = "instagram/followers/{}/{}/{}/{}.csv".format(year, month, day, profile)
-    save_pd_csv_to_s3(df=df, key=directory)
+
+    if type == 'pr_Followers': # '/igFollowers':
+        df = cls.get_users_followers(profile,
+                                    dfigaccounts['Username'][account_index],
+                                    dfigaccounts['Password'][account_index]
+                                    )
+        directory = "bronze/instagram/{}/{}/{}/{}/followers.csv".format(profile, year, month, day)
+        save_pd_csv_to_s3(df=df, key=directory)
+    elif type == 'pr_Followings': #'/igFollowings':
+        df = cls.get_users_followings(profile,
+                                     dfigaccounts['Username'][account_index],
+                                     dfigaccounts['Password'][account_index]
+                                     )
+        directory = "bronze/instagram/{}/{}/{}/{}/followings.csv".format(profile, year, month, day)
+        save_pd_csv_to_s3(df=df, key=directory)

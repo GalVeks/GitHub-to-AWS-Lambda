@@ -177,11 +177,21 @@ class GetInstagramProfile():
         return fdf
 
     def get_users_followings(self, user_name, un, psw):
-        '''Note: login required to get a profile's followings.'''
+        """Note: login required to get a profile's followings."""
         self.L.login(un, psw)
         profile = instaloader.Profile.from_username(self.L.context, user_name)
-        file = open("following_names.txt", "a+")
+        fdf = pd.DataFrame(columns=['account_name'
+            , 'followee_username'
+            , 'followee_full_name'
+                                    ])
+
         for followee in profile.get_followees():
             username = followee.username
-            file.write(username + "\n")
-            print(username)
+            full_name = followee.full_name
+            fdf.loc[len(fdf.index)] = [user_name, username, full_name]
+            print(fdf)
+
+        #  fdf.to_csv(os.path.join(directory_profile,user_name+'.csv'))
+        return fdf
+
+
